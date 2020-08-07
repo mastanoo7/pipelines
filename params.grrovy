@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    parameters {
+          choice choices: ['orange', 'blue', 'red', 'green'], description: 'select any one', name: 'param'
+          string defaultValue: 'mastan', description: 'who r u ?', name: 'user', trim: false
+          password defaultValue: 'secret', description: 'enter your password', name: 'password'
+          file description: 'choose your file to upload', name: 'file'
+    }
+    stages {
+        stage ('exam') {
+            steps {
+                echo "hello ${params.param}"
+                echo "hello ${params.user}"
+                echo "hello ${params.password}"
+                echo "hello ${params.file}"
+            }
+        }
+    }
+}
